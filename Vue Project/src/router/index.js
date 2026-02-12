@@ -1,8 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Draft from '@/views/Draft.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [],
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Draft,
+    }
+  ],
 })
 
 export default router
