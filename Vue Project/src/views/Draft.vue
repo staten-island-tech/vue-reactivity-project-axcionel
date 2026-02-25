@@ -1,9 +1,14 @@
-<template lang="">
-    <h1>Draft</h1>
-    <li v-for="player in draftees" :key="player.name">
-        {{ player.name }} - {{ player.position }} - ${{ player.salary }} <img :src="player.image" alt="" />
+<template>
+  <h1>2025 Draft</h1>
+  <gr class="grid">
+    <li v-for="player in draftees" class="player-card">
+      <img :src="player.image" class="image" />
+      <span class="player-info">{{ player.name }} - {{ player.position }}</span>
+      <div> ${{ player.salary }}</div>
     </li>
+  </gr>
 </template>
+
 
 <script setup>
 import { ref } from 'vue';
@@ -35,15 +40,36 @@ const draftees = ref([
   { name: "Jaxson Dart", salary: 17000000, position: "QB", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4689114.png&w=350&h=254" },
   { name: "James Pearce Jr.", salary: 17000000, position: "DE", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/5081394.png&w=350&h=254" },
   { name: "Malaki Starks", salary: 17000000, position: "S", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685530.png&w=350&h=254" },
-  { name: "Tyleik Williams", salary: 16000000, position: "DT", image: "" },
-  { name: "Josh Conerly Jr.", salary: 16000000, position: "OT", image: "" },
-  { name: "Maxwell Hairston", salary: 15000000, position: "CB", image: "" },
-  { name: "Jihaad Campbell", salary: 15000000, position: "LB", image: "" },
-  { name: "Josh Simmons", salary: 15000000, position: "OT", image: "" }
+  { name: "Tyleik Williams", salary: 16000000, position: "DT", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4431615.png&w=350&h=254" },
+  { name: "Josh Conerly Jr.", salary: 16000000, position: "OT", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685326.png&w=350&h=254" },
+  { name: "Maxwell Hairston", salary: 15000000, position: "CB", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4688931.png&w=350&h=254" },
+  { name: "Jihaad Campbell", salary: 15000000, position: "LB", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685287.png&w=350&h=254" },
+  { name: "Josh Simmons", salary: 15000000, position: "OT", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4569659.png&w=350&h=254" }
 ]);
 </script>
 
 
-<style lang="">
-
+<style>
+h1 {
+    text-align: center;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    list-style: none;
+    padding: 0;
+}
+.player-card {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    gap: 8px;
+    flex: 0 0 calc(25% - 20px); 
+}
+.image {
+    object-fit: cover;
+    border-radius: 8px;
+}
 </style>
