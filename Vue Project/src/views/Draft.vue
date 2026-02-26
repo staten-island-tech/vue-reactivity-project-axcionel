@@ -70,6 +70,6 @@ h1 {
 }
 .image {
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 </style>
