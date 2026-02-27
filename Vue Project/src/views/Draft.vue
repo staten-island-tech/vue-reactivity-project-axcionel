@@ -1,17 +1,26 @@
 <template>
   <h1>2025 Draft</h1>
-  <gr class="grid">
-    <li v-for="player in draftees" class="player-card">
-      <img :src="player.image" class="image" />
-      <span class="player-info">{{ player.name }} - {{ player.position }}</span>
-      <div> ${{ player.salary }}</div>
-    </li>
-  </gr>
+  <h2>*All prices are for 4 year contracts</h2>
+  <div class="grid">
+  <PlayerCard 
+  @click="addtoTeam(player)" 
+  v-for="player in draftees" 
+  :key="player.name" 
+  :player="player"
+      >
+      <button>Add to Team</button>
+    </PlayerCard>
+  </div>
 </template>
 
 
 <script setup>
+function addtoTeam(player) {
+  console.log(`${player.name}`);
+}
+
 import { ref } from 'vue';
+import PlayerCard from '@/components/PlayerCard.vue';
 const draftees = ref([
   { name: "Cam Ward", salary: 49000000, position: "QB", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4688380.png&w=350&h=254" },
   { name: "Travis Hunter", salary: 47000000, position: "WR", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685415.png&w=350&h=254" },
@@ -52,6 +61,10 @@ const draftees = ref([
 <style>
 h1 {
     text-align: center;
+}
+h2 {
+  text-align: center;
+  font-size: 20px;
 }
 .grid {
     display: flex;
