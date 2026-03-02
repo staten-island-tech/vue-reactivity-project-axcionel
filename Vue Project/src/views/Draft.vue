@@ -67,19 +67,17 @@ h2 {
   font-size: 20px;
 }
 .grid {
-    display: flex;
-    flex-wrap: wrap; 
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
     gap: 20px; 
-    list-style: none;
     padding: 0;
+    margin: 0;  
 }
 .player-card {
     display: flex;
     flex-direction: column; 
     align-items: center; 
     text-align: center; 
-    gap: 8px;
-    flex: 0 0 calc(25% - 20px); 
 }
 .image {
     object-fit: cover;
