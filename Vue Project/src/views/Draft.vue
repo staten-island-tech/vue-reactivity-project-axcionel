@@ -1,26 +1,32 @@
 <template>
+  <div class="main">
   <h1>2025 Draft</h1>
   <h2>*All prices are for 4 year contracts</h2>
   <div class="grid">
-  <PlayerCard 
-  @click="addtoTeam(player)" 
+  <PlayerCard  
   v-for="player in draftees" 
   :key="player.name" 
-  :player="player"
-      >
-      <button>Add to Team</button>
+  :player="player">
+    <button @click="addtoTeam(player)">Add to Team</button>
     </PlayerCard>
   </div>
+  </div>
+  <ShoppingCart :team="myTeam" />
 </template>
 
 
 <script setup>
-function addtoTeam(player) {
-  console.log(`${player.name}`);
-}
-
 import { ref } from 'vue';
 import PlayerCard from '@/components/PlayerCard.vue';
+import ShoppingCart from '@/components/ShoppingCart.vue';
+
+const myTeam = ref([]);
+function addtoTeam(player) {
+  if (!myTeam.value.find(p => p.name === player.name)) {
+    myTeam.value.push(player);
+  }
+}
+
 const draftees = ref([
   { name: "Cam Ward", salary: 49000000, position: "QB", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4688380.png&w=350&h=254" },
   { name: "Travis Hunter", salary: 47000000, position: "WR", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685415.png&w=350&h=254" },
@@ -59,6 +65,9 @@ const draftees = ref([
 
 
 <style>
+.main {
+  padding-right: 19%; 
+}
 h1 {
     text-align: center;
 }
@@ -78,9 +87,5 @@ h2 {
     flex-direction: column; 
     align-items: center; 
     text-align: center; 
-}
-.image {
-    object-fit: cover;
-    border-radius: 10px;
 }
 </style>

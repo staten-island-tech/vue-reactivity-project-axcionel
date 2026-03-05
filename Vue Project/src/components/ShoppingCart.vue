@@ -1,26 +1,47 @@
 <template>
   <div class="sidebar">
-    <h2>Shopping Cart</h2>
-  </div>
+    <h1>Team</h1>
+    <ul>
+      <li v-for="player in team" :key="player.name">
+        {{ player.name }} - {{ player.position }} - ${{ player.salary.toLocaleString() }}
+      </li>
+      <div>Total: ${{ calculateTotal(team) }}</div>
+    </ul>
+    </div>
 </template>
 
-<script>
-  
+<script setup>
+const props = defineProps({
+  team: {
+    type: Array,
+    required: true,
+    default: () => []
+  }
+});
+
+function calculateTotal(teamArray) {
+  const total = teamArray.reduce((sum, player) => sum + (player.salary || 0), 0);
+  return total.toLocaleString();
+}
+
 </script>
 
-<style>
+<style scoped>
 .sidebar {
   position: fixed;
   top: 0;
   right: 0;
-  width: 15%;
+  width: 17%;
   height: 100%;
-  background-color: #adadad;
-  line-height: 1rem;
+  background-color: #ffffff;
+  line-height: 1.5rem; 
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
+  border: 2px solid black;
 }
-
+li {
+  padding-left: 20px;
+}
 </style>

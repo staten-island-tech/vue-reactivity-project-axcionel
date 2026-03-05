@@ -1,7 +1,7 @@
 <template>
     <div class="player-card">
-        <img :src="player.image" class="image" />
-        <span class="player-card">{{ player.name }} - {{ player.position }}</span>
+        <img :src="player.image"/>
+        <div>{{ player.name }} - {{ player.position }}</div>
         <div> ${{ player.salary }}</div>
         <slot></slot>
     </div>
