@@ -11,7 +11,7 @@
     </PlayerCard>
   </div>
   </div>
-  <ShoppingCart :team="myTeam" />
+<ShoppingCart :team="myTeam" :remove-player="removeFromTeam" />
 </template>
 
 
@@ -27,9 +27,13 @@ function addtoTeam(player) {
   }
 }
 
+function removeFromTeam(playerToRemove) {
+  myTeam.value = myTeam.value.filter(p => p.name !== playerToRemove.name);
+}
+
 const draftees = ref([
   { name: "Cam Ward", salary: 49000000, position: "QB", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4688380.png&w=350&h=254" },
-  { name: "Travis Hunter", salary: 47000000, position: "WR", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685415.png&w=350&h=254" },
+  { name: "Travis Hunter", salary: 47000000, position: "WR/CB", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685415.png&w=350&h=254" },
   { name: "Abdul Carter", salary: 45000000, position: "DE", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4725996.png&w=350&h=254" },
   { name: "Will Campbell", salary: 44000000, position: "OT", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685298.png&w=350&h=254" },
   { name: "Mason Graham", salary: 41000000, position: "DT", image: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4873232.png&w=350&h=254" },

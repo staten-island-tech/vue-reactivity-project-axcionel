@@ -4,6 +4,7 @@
     <ul>
       <li v-for="player in team" :key="player.name">
         {{ player.name }} - {{ player.position }} - ${{ player.salary.toLocaleString() }}
+        <button @click="removePlayer(player)">X</button>
       </li>
       <div>Total: ${{ calculateTotal(team) }}</div>
     </ul>
@@ -16,8 +17,13 @@ const props = defineProps({
     type: Array,
     required: true,
     default: () => []
+  },
+  removePlayer: {
+    type: Function,
+    required: true
   }
 });
+
 
 function calculateTotal(teamArray) {
   const total = teamArray.reduce((sum, player) => sum + (player.salary || 0), 0);
@@ -40,8 +46,5 @@ function calculateTotal(teamArray) {
   flex-direction: column;
   overflow-y: auto;
   border: 2px solid black;
-}
-li {
-  padding-left: 20px;
 }
 </style>
